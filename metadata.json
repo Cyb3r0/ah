@@ -1,0 +1,6 @@
+{
+  "name": "حصن | HOSN",
+  "description": "المنصة الذكية الموحدة لإدارة الأمن والسلامة وتشغيل المباني والمرافق",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
