@@ -86,37 +86,48 @@ export const HosnLogo: React.FC<HosnLogoProps> = ({
         </div>
       ) : (
         /* Standard Header Logo */
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           {/* Shield Badge */}
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center group">
+            <div className="absolute inset-0 bg-amber-400/20 rounded-full blur-md group-hover:bg-amber-400/40 transition-all pointer-events-none" />
             <svg
-              className={`${shieldWidth} text-amber-400 drop-shadow-[0_2px_8px_rgba(196,154,69,0.4)]`}
+              className={`${shieldWidth} text-amber-400 drop-shadow-[0_4px_12px_rgba(229,176,68,0.45)] relative z-10 transition-transform group-hover:scale-105`}
               viewBox="0 0 100 120"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Castle Top Shield Contour */}
+              {/* Castle Top Shield Contour with Golden Bevel */}
               <path
                 d="M10 15 L25 15 L25 5 L40 5 L40 15 L60 15 L60 5 L75 5 L75 15 L90 15 L90 60 C90 90 50 115 50 115 C50 115 10 90 10 60 Z"
                 fill="url(#goldGradient)"
-                stroke="#ffe899"
-                strokeWidth="4"
+                stroke="#fff1b8"
+                strokeWidth="3.5"
               />
-              {/* Inner Cutout */}
+              {/* Inner Royal Dark Emerald Cutout */}
               <path
-                d="M20 25 L80 25 L80 58 C80 82 50 102 50 102 C50 102 20 82 20 58 Z"
-                fill="#072016"
+                d="M18 24 L82 24 L82 58 C82 84 50 106 50 106 C50 106 18 84 18 58 Z"
+                fill="#051f14"
+                stroke="url(#emeraldGradient)"
+                strokeWidth="1.5"
               />
-              {/* H Monogram */}
+              {/* H Monogram (Fortress Castle Pillar) */}
               <path
-                d="M36 40 L44 40 L44 54 L56 54 L56 40 L64 40 L64 74 L56 74 L56 62 L44 62 L44 74 L36 74 Z"
+                d="M34 38 L44 38 L44 54 L56 54 L56 38 L66 38 L66 76 L56 76 L56 63 L44 63 L44 76 L34 76 Z"
                 fill="url(#goldGradient)"
+                filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))"
               />
+              {/* Central Diamond Star */}
+              <circle cx="50" cy="58.5" r="2.5" fill="#ffffff" />
               <defs>
                 <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#ffd700" />
-                  <stop offset="50%" stopColor="#c49a45" />
-                  <stop offset="100%" stopColor="#8c6820" />
+                  <stop offset="0%" stopColor="#fff5c0" />
+                  <stop offset="25%" stopColor="#f5d378" />
+                  <stop offset="60%" stopColor="#e5b044" />
+                  <stop offset="100%" stopColor="#966b1a" />
+                </linearGradient>
+                <linearGradient id="emeraldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#34d399" />
+                  <stop offset="100%" stopColor="#064e3b" />
                 </linearGradient>
               </defs>
             </svg>
@@ -125,10 +136,10 @@ export const HosnLogo: React.FC<HosnLogoProps> = ({
           {showText && (
             <div className="flex flex-col items-start text-right">
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-lg sm:text-xl text-amber-400 tracking-wider font-['Alexandria',sans-serif]">
+                <span className="font-extrabold text-lg sm:text-xl tracking-wider font-['Alexandria',sans-serif] gold-gradient-text drop-shadow-sm">
                   HOSN
                 </span>
-                <span className="font-bold text-base sm:text-lg text-emerald-100 font-['Tajawal',sans-serif]">
+                <span className="font-black text-base sm:text-lg text-emerald-100 font-['Tajawal',sans-serif]">
                   حُصن
                 </span>
               </div>

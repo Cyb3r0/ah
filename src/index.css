@@ -2,48 +2,80 @@
 
 @layer base {
   :root {
-    --bg-main: #061810;
-    --card-bg: #0b251a;
-    --card-border: #1a4231;
-    --gold-primary: #c49a45;
-    --gold-light: #dfba63;
-    --gold-dark: #8c6a23;
+    --bg-main: #02140c;
+    --card-bg: #072418;
+    --card-border: #1a4a35;
+    --gold-primary: #e5b044;
+    --gold-light: #f5d378;
+    --gold-dark: #a17822;
+    --emerald-primary: #10b981;
   }
   
   body {
     font-family: 'Tajawal', sans-serif;
-    background-color: #040e0a;
-    color: #e6f4ee;
+    background-color: #02120a;
+    background-image: 
+      radial-gradient(at 15% 15%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+      radial-gradient(at 85% 85%, rgba(229, 176, 68, 0.06) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(6, 32, 22, 0.5) 0px, transparent 100%);
+    color: #e6f6ee;
     overflow-x: hidden;
+    min-height: 100vh;
   }
+}
+
+/* Luxury Glass & Glow Utilities */
+.hosn-glass {
+  background: rgba(7, 34, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 176, 68, 0.22);
+}
+
+.hosn-glass-emerald {
+  background: rgba(6, 28, 19, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+}
+
+.gold-border-glow {
+  border-color: rgba(229, 176, 68, 0.6);
+  box-shadow: 0 0 20px rgba(229, 176, 68, 0.15), inset 0 0 15px rgba(229, 176, 68, 0.05);
+}
+
+.emerald-border-glow {
+  border-color: rgba(52, 211, 153, 0.5);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15), inset 0 0 15px rgba(16, 185, 129, 0.05);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #061810;
+  background: #03140d;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1a4231;
-  border-radius: 4px;
+  background: #184834;
+  border-radius: 9999px;
+  border: 1px solid rgba(229, 176, 68, 0.15);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c49a45;
+  background: #e5b044;
 }
 
 /* Pulse animation for SOS */
 @keyframes sosPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7), 0 0 30px rgba(225, 29, 72, 0.5);
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.8), 0 0 35px rgba(225, 29, 72, 0.6);
   }
   70% {
-    box-shadow: 0 0 0 25px rgba(225, 29, 72, 0), 0 0 45px rgba(225, 29, 72, 0.2);
+    box-shadow: 0 0 0 24px rgba(225, 29, 72, 0), 0 0 50px rgba(225, 29, 72, 0.2);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0), 0 0 30px rgba(225, 29, 72, 0);
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0), 0 0 35px rgba(225, 29, 72, 0);
   }
 }
 
@@ -64,17 +96,18 @@
   animation: radarSweep 6s linear infinite;
 }
 
-@keyframes glowCard {
-  0%, 100% {
-    border-color: rgba(225, 29, 72, 0.4);
-    box-shadow: 0 0 15px rgba(225, 29, 72, 0.2);
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
   }
-  50% {
-    border-color: rgba(225, 29, 72, 0.9);
-    box-shadow: 0 0 25px rgba(225, 29, 72, 0.45);
+  100% {
+    background-position: 200% 0;
   }
 }
 
-.animate-emergency-border {
-  animation: glowCard 2s ease-in-out infinite;
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fef08a 0%, #e5b044 50%, #b48324 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+

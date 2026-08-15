@@ -53,26 +53,32 @@ export const DeviceFrame: React.FC<DeviceFrameProps> = ({
 
   const navVariant = getBottomNavVariant();
 
+  // Full Native Mobile Mode (Used on real phones and in fullscreen mode)
   if (!isFramed) {
     return (
-      <div className="w-full max-w-md mx-auto min-h-[780px] bg-[#061810] border border-[#1d4634] rounded-3xl shadow-2xl overflow-hidden flex flex-col justify-between">
-        <StatusBar timeOverride={getScreenTime()} />
-        <div className="flex-1 flex flex-col overflow-y-auto">
+      <div className="w-full min-h-screen max-w-2xl mx-auto bg-[#02120a] text-emerald-50 flex flex-col justify-between overflow-x-hidden shadow-2xl relative">
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col overflow-y-auto pb-2">
           {children}
         </div>
+
+        {/* Floating / Sticky Mobile Bottom Nav */}
         {navVariant && (
-          <BottomNav 
-            currentScreen={currentScreen} 
-            onNavigate={onNavigate} 
-            variant={navVariant} 
-          />
+          <div className="sticky bottom-0 left-0 right-0 z-40 bg-[#061e14]/95 backdrop-blur-lg border-t border-emerald-500/20 pb-[max(env(safe-area-inset-bottom),0.5rem)]">
+            <BottomNav 
+              currentScreen={currentScreen} 
+              onNavigate={onNavigate} 
+              variant={navVariant} 
+            />
+          </div>
         )}
       </div>
     );
   }
 
+  // Framed Simulator Mode (Used on desktop presentation mode)
   return (
-    <div className="relative mx-auto my-4 w-[380px] sm:w-[410px] h-[844px] max-h-[92vh] rounded-[52px] bg-[#0c1813] p-[10px] shadow-[0_0_60px_rgba(0,0,0,0.8),0_0_25px_rgba(196,154,69,0.25)] border-4 border-[#3e321b] ring-1 ring-amber-400/30 flex flex-col select-none transition-all duration-300">
+    <div className="relative mx-auto my-3 w-[380px] sm:w-[410px] h-[844px] max-h-[90vh] rounded-[52px] bg-[#0c1813] p-[10px] shadow-[0_0_60px_rgba(0,0,0,0.8),0_0_25px_rgba(196,154,69,0.25)] border-4 border-[#3e321b] ring-1 ring-amber-400/30 flex flex-col select-none transition-all duration-300">
       {/* Outer Metallic Bezel Accent */}
       <div className="absolute inset-0 rounded-[50px] border border-amber-500/20 pointer-events-none" />
 
@@ -81,7 +87,7 @@ export const DeviceFrame: React.FC<DeviceFrameProps> = ({
       <div className="absolute -bottom-1 right-24 w-1.5 h-1 bg-[#1a150b]" />
 
       {/* Screen Container */}
-      <div className="relative w-full h-full rounded-[42px] bg-[#061810] overflow-hidden flex flex-col justify-between border border-[#163c2c] shadow-inner">
+      <div className="relative w-full h-full rounded-[42px] bg-[#02120a] overflow-hidden flex flex-col justify-between border border-[#163c2c] shadow-inner">
         {/* Dynamic Island / Notch */}
         <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-40 flex items-center justify-between px-3 border border-white/5 shadow-md">
           <div className="w-2.5 h-2.5 rounded-full bg-[#081f16] border border-white/10" />
@@ -108,7 +114,7 @@ export const DeviceFrame: React.FC<DeviceFrameProps> = ({
         )}
 
         {/* Bottom iOS Home Indicator Bar */}
-        <div className="w-full bg-[#072016] py-1.5 flex items-center justify-center z-40">
+        <div className="w-full bg-[#04160d] py-1.5 flex items-center justify-center z-40">
           <div className="w-32 h-1 bg-white/40 rounded-full hover:bg-white/70 transition-colors cursor-pointer" onClick={() => onNavigate('manager-dashboard')} title="العودة للرئيسية" />
         </div>
       </div>
